@@ -1,12 +1,14 @@
-import { StyleSheet, Text, View, Platform, SafeAreaView, Image } from 'react-native'
+import { StyleSheet, Text, View, Platform, SafeAreaView, Image, TextInput, Pressable } from 'react-native'
 import React, {useState, useCallback, useEffect} from 'react'
-import { ModalPortal } from 'react-native-modals';
 import {useFonts} from 'expo-font';
-import { useNavigation } from '@react-navigation/native'
+//import { useNavigation } from '@react-navigation/native'
+//import { ModalPortal } from 'react-native-modals';
+
 
 
 const ProjectIcon = require("./assets/project.png");
 const RightArrowIcon = require("./assets/rightarrowicon.png");
+const SearchIcon = require("./assets/searchicon.png");
 
 
 export default function App() {
@@ -18,45 +20,38 @@ export default function App() {
         'Nunito-ExtraBold': require('./assets/fonts/Nunito-ExtraBold.ttf'),
         'NunitoSans-Medium': require('./assets/fonts/NunitoSans-Medium.ttf'),
       });
-	const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
+
+		{/**____________ header_____________ */}
+
 		<View style={styles.headerSection}>
-			<Text style={styles.headerText}>Welcome to our app...</Text>
-			<Text style={styles.headerText}>Good evening...<Text style={styles.userName}>Tejas !</Text></Text>
+			<Text style={styles.headerText}>Projects catalog</Text>
+			<View style={styles.addProject}>
+				<Text style={styles.addProjectText}>Add Project</Text>
+			</View>
 		</View>
 
 
+
+		{/** _____________search bar_______________ */}
+
+		<View style={styles.SearchBarInput}>
+			<Image source={SearchIcon} style={{width:20, height:20}}/>
+			<TextInput
+				placeholder="Search for projects"
+				style={{flex:1, fontWeight:'500',fontFamily:"Nunito-Medium",fontSize:16}}
+				placeholderTextColor={'#7C7E7E'}
+			/>
+		</View>
+
+		<Text>Recent Projects...</Text>
+
+
+
 		
-			<View style={styles.fieldsSection}>
-				<View style={{flexDirection:"row"}}>
-					<Image source={ProjectIcon} style={{width:25,height:25}}/>
-					<Text style={styles.fieldsText}>Projects</Text>
-				</View>
-				<Image source={RightArrowIcon} style={{width:35,height:35}}/>
-			</View>
-			<View style={styles.fieldsSection}>
-				<View style={{flexDirection:"row"}}>
-					<Image source={ProjectIcon} style={{width:25,height:25}}/>
-					<Text style={styles.fieldsText}>Tasks</Text>
-				</View>
-				<Image source={RightArrowIcon} style={{width:35,height:35}}/>
-			</View>
-			<View style={styles.fieldsSection}>
-				<View style={{flexDirection:"row"}}>
-					<Image source={ProjectIcon} style={{width:25,height:25}}/>	
-					<Text style={styles.fieldsText}>Clients</Text>
-				</View>
-				<Image source={RightArrowIcon} style={{width:35,height:35}}/>
-			</View>
-			<View style={styles.fieldsSection}>
-				<View style={{flexDirection:"row"}}>
-					<Image source={ProjectIcon} style={{width:25,height:25}}/>
-					<Text style={styles.fieldsText}>Teams</Text>
-				</View>
-				<Image source={RightArrowIcon} style={{width:35,height:35}}/>
-			</View>
-		
+			
 
     </SafeAreaView>
   )
@@ -70,35 +65,42 @@ const styles = StyleSheet.create({
 		paddingVertical:20
 	},
 	headerSection:{
-		marginTop:20
+		marginTop:20,
+		flexDirection:"row",
+		alignItems:"center",
+		justifyContent:"space-between",
+		marginBottom:20
 	},
 	headerText:{
 		fontSize:20,
 		fontStyle:"normal",
 		fontWeight:"500",
+		fontFamily:"Nunito-Bold"
+	},
+	addProject:{
+		paddingVertical:4,
+		paddingHorizontal:7,
+		backgroundColor:"#399918",
+		borderRadius:7,
+	},
+	addProjectText:{
+		fontSize:12,
+		color:"#FFFFFF",
+		fontWeight:"600",
 		fontFamily:"Nunito-SemiBold"
 	},
-	userName:{
-		fontSize:22,
-		color:"green",
-		fontStyle:"italic",
-		fontWeight:"800",
-		fontFamily:"Nunito-Bold"
+	SearchBarInput:{
+		borderColor: '#CBCDCD',
+		flexDirection: 'row',
+		borderRadius: 8,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderWidth: 1,
+		padding: 10,
+		height: 45,
+		gap: 8,
+		width: "100%",
+		marginBottom:20
+	}
 
-	},
-	fieldsSection:{
-		paddingHorizontal:20,
-		paddingVertical:16,
-		flexDirection:"row",
-		alignItems:"center",
-		justifyContent:"space-between",
-		borderBottomWidth:1,
-		
-	},
-	fieldsText:{
-		fontSize:20,
-		fontWeight:"600",
-		fontFamily:"Nunito-SemiBold",
-		marginLeft:15
-	},
 })
