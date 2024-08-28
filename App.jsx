@@ -3,11 +3,8 @@ import React from 'react'
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen"
 import AddProject from "./screens/AddProject";
-import {useFonts} from 'expo-font';
+//import {useFonts} from 'expo-font';
 
-
-const ProjectIcon = require("./assets/project.png");
-const RightArrowIcon = require("./assets/rightarrowicon.png");
 
 const Stack = createNativeStackNavigator();
 

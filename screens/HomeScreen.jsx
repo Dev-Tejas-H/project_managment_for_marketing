@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,SafeAreaView, Image, TextInput, Pressable, ScrollView, FlatList } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+
 const SearchIcon = require("../assets/searchicon.png");
 
 
